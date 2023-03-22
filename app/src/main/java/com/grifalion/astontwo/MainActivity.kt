@@ -13,43 +13,30 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var mCount = 0
 
-    companion object{
-        val KEY_FOR_SECOND_ACTIVITY = "countHello"
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showToast()
         countUp()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("keyInstance", binding.showCount.text.toString())
+        outState.putString("keyInstance", binding.edText.text.toString())
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        binding.showCount.text = savedInstanceState.getString("keyInstance")
+        binding.edText.text = savedInstanceState.getString("keyInstance")
     }
 
     private fun countUp() = with(binding){
         buttonCount.setOnClickListener {
             mCount++
-            if(showCount != null){
-                showCount.text = mCount.toString()
+            if(tvCount != null){
+                tvCount.text = mCount.toString()
             }
         }
     }
 
-    private fun showToast(){
-        binding.buttonToast.setOnClickListener {
-            Toast.makeText(this,R.string.toast_message,Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,SecondActivity::class.java)
-            val messageForActivity = binding.showCount.text.toString()
-            intent.putExtra(KEY_FOR_SECOND_ACTIVITY,messageForActivity)
-            startActivity(intent)
-        }
-    }
 }

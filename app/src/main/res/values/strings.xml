@@ -6,4 +6,5 @@
     <string name="toast_message">Hello Toast!</string>
     <string name="hello">Hello!</string>
     <string name="zero">0</string>
+    <string name="text_info">Введите текст</string>
 </resources>

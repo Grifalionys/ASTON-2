@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("keyInstance", binding.edText.text.toString())
+        outState.putString("keyInstance", binding.tvCount.text.toString())
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        binding.edText.text = savedInstanceState.getString("keyInstance")
+        binding.tvCount.text = savedInstanceState.getString("keyInstance")
     }
 
     private fun countUp() = with(binding){

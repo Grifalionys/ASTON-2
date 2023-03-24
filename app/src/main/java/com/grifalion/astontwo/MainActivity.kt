@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
             var loc = edLocation.text.toString()
             var adressUri = Uri.parse("geo:0,0?q=" + loc)
             val intent = Intent(Intent.ACTION_VIEW, adressUri)
-            try {
+            if(intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
-            } catch (e: Exception) {
+            } else {
                 Toast.makeText(this@MainActivity, R.string.alarm_put_street, Toast.LENGTH_SHORT)
                     .show()
             }
